@@ -76,7 +76,15 @@ WSGI_APPLICATION = 'comicdatabase.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'comicdatabase',
+        'USER': 'root',
+        'PASSWORD': 'R@diohead97',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'OPTIONS': {
+            'autocommit': True
+        }
+
     }
 }
 
