@@ -13,7 +13,7 @@ def index(request):
 
 
 def detail(request, superhero_id):
-    single_superhero = Superhero.objects.get(pk=superhero_id)
+    single_superhero = Superhero.objects.get(id=superhero_id)
     context = {
         'single_superhero': single_superhero
     }
