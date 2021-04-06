@@ -14,5 +14,9 @@
     <p>Secondary Ability: {{ single_superhero.secondary_ability}}</p>
     <p>Catchphrase: {{ single_superhero.catchphrase}}</p>
     <p>First Appearance: {{ single_superhero.first_appearance}}</p>
+
+    <form action="{% url 'superheroes:index'%}" method="get">
+        <button type="submit">Back to Main</button>
+    </form>
 </body>
 </html>

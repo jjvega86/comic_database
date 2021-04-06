@@ -31,6 +31,22 @@ def edit_get(request, superhero_id):
     return render(request, 'superheroes/edit.html', context)
 
 
+def edit_post(request):
+    if request.method == 'POST':
+        superhero_id = request.POST.get('id')
+        hero_to_edit = Superhero.objects.get(id=superhero_id)
+        hero_to_edit.name = request.POST.get('name')
+        hero_to_edit.alter_ego = request.POST.get('alter_ego')
+        hero_to_edit.primary_ability = request.POST.get('primary')
+        hero_to_edit.secondary_ability = request.POST.get('secondary')
+        hero_to_edit.catchphrase = request.POST.get('catchphrase')
+        hero_to_edit.first_appearance = request.POST.get('appearance')
+        hero_to_edit.save()
+        return HttpResponseRedirect(reverse('superheroes:detail', args=[superhero_id]))
+    else:
+        return render(request, 'superheroes/edit.html')
+
+
 def create(request):
     if request.method == 'POST':
         name = request.POST.get('name')
