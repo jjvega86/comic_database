@@ -1,13 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit Superhero</title>
-</head>
-<body>
+{% extends 'superheroes/main.html' %}
+
+{% block content %}
 <h1>Edit {{hero_to_edit.name}}</h1>
 <form action="{% url 'superheroes:edit_post' %}" method="post">
         {% csrf_token%}
@@ -20,5 +13,4 @@
         First Appearance: <input type="text" name="appearance" id="appearance" value="{{hero_to_edit.first_appearance}}"><br>
         <input type="submit" value="Update!">
     </form>
-</body>
-</html>
+{% endblock%}
