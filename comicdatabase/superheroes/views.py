@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import Superhero
 
+
 # Create your views here.
 
 
@@ -22,6 +23,14 @@ def detail(request, superhero_id):
     return render(request, 'superheroes/detail.html', context)
 
 
+def edit_get(request, superhero_id):
+    hero_to_edit = Superhero.objects.get(id=superhero_id)
+    context = {
+        'hero_to_edit': hero_to_edit
+    }
+    return render(request, 'superheroes/edit.html', context)
+
+
 def create(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -30,9 +39,10 @@ def create(request):
         secondary_ability = request.POST.get('secondary')
         catchphrase = request.POST.get('catchphrase')
         first_appearance = request.POST.get('appearance')
-        new_superhero = Superhero(name=name, alter_ego=alter_ego, primary_ability=primary_ability, secondary_ability=secondary_ability, catchphrase=catchphrase, first_appearance=first_appearance)
+        new_superhero = Superhero(name=name, alter_ego=alter_ego, primary_ability=primary_ability,
+                                  secondary_ability=secondary_ability, catchphrase=catchphrase,
+                                  first_appearance=first_appearance)
         new_superhero.save()
         return HttpResponseRedirect(reverse('superheroes:index'))
     else:
         return render(request, 'superheroes/create.html')
-

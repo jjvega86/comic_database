@@ -8,14 +8,15 @@
     <title>Superhero Index</title>
 </head>
 <body>
-    <h1>All Superheroes</h1>
-    <ul>
-         {% for superhero in all_superheroes %}
-        <li><h2> {{superhero.name}} </h2></li>
-        <a href="{% url 'superheroes:detail' superhero.id %}">See more info</a>
-        {% endfor %}
-    </ul>
-
-
+<h1>All Superheroes</h1>
+<form action="{% url 'superheroes:create_new_superhero'%}" method="get">
+    <button type="submit">Create New Hero!</button>
+</form>
+<ul>
+    {% for superhero in all_superheroes %}
+    <li><h2> {{superhero.name}} </h2></li>
+    <a href="{% url 'superheroes:detail' superhero.id %}">See more info</a>
+    {% endfor %}
+</ul>
 </body>
 </html>
