@@ -1,14 +1,16 @@
 {% extends 'superheroes/main.html' %}
 
 {% block content %}
-<h1> The name of your hero is: {{ single_superhero.name }}</h1>
-    <p>Alter Ego: {{ single_superhero.alter_ego}}</p>
-    <p>Primary Ability: {{ single_superhero.primary_ability}}</p>
-    <p>Secondary Ability: {{ single_superhero.secondary_ability}}</p>
-    <p>Catchphrase: {{ single_superhero.catchphrase}}</p>
-    <p>First Appearance: {{ single_superhero.first_appearance}}</p>
-
-    <form action="{% url 'superheroes:index'%}" method="get">
-        <button type="submit">Back to Main</button>
+<div class="jumbotron text-center">
+  <h1 class="display-4">{{ single_superhero.name }}</h1>
+    <p class="lead">Alter Ego: {{ single_superhero.alter_ego}}</p>
+    <p class="lead">Primary Ability: {{ single_superhero.primary_ability}}</p>
+    <p class="lead">Secondary Ability: {{ single_superhero.secondary_ability}}</p>
+    <p class="lead">Catchphrase: {{ single_superhero.catchphrase}}</p>
+    <p class="lead">First Appearance: {{ single_superhero.first_appearance}}</p>
+  <hr class="my-4">
+  <form action="{% url 'superheroes:index'%}" method="get">
+        <button type="submit" class="btn btn-success btn-lg">Back to Main</button>
     </form>
+</div>
 {% endblock%}

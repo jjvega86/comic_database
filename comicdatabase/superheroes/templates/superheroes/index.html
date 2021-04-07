@@ -1,14 +1,14 @@
 {% extends 'superheroes/main.html' %}
 
 {% block content %}
-<div class="container text-center">
-    <div class="row">
+<div class="container text-center p-5">
+    <div class="row p-3">
         <div class="col-md-6">
             <h1>All Superheroes</h1>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 p-2">
             <form action="{% url 'superheroes:create_new_superhero'%}" method="get">
-                <button type="submit">Create New Hero!</button>
+                <button type="submit" class="btn btn-outline-success btn-lg">Create New Hero!</button>
             </form>
         </div>
     </div>
@@ -17,7 +17,7 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
+                <th scope="col">Superhero Name</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
                 <th scope="col"></th>
@@ -26,7 +26,7 @@
             <tbody>
             {% for superhero in all_superheroes%}
             <tr>
-                <th scope="row">{{ superhero.id }}</th>
+                <th scope="row">{{ forloop.counter }}</th>
                 <td>{{superhero.name}}</td>
                 <td><a href="{% url 'superheroes:detail' superhero.id %}">See more info</a></td>
                 <td><a href="{% url 'superheroes:edit_get' superhero.id %}">Edit Hero</a></td>

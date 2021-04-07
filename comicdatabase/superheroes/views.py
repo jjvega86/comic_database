@@ -8,6 +8,9 @@ from .utils import parse_date_string
 
 # Create your views here.
 
+def home(request):
+    return render(request, 'superheroes/home.html')
+
 
 def index(request):
     all_superheros = Superhero.objects.all()
