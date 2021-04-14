@@ -45,15 +45,7 @@ def detail(request, superhero_id):
     return render(request, 'superheroes/detail.html', context)
 
 
-def edit_get(request, superhero_id):
-    hero_to_edit = Superhero.objects.get(id=superhero_id)
-    context = {
-        'hero_to_edit': hero_to_edit
-    }
-    return render(request, 'superheroes/edit.html', context)
-
-
-def edit_post(request):
+def edit(request, superhero_id):
     if request.method == 'POST':
         superhero_id = request.POST.get('id')
         hero_to_edit = Superhero.objects.get(id=superhero_id)
@@ -66,7 +58,11 @@ def edit_post(request):
         hero_to_edit.save()
         return HttpResponseRedirect(reverse('superheroes:detail', args=[superhero_id]))
     else:
-        return render(request, 'superheroes/edit.html')
+        hero_to_edit = Superhero.objects.get(id=superhero_id)
+        context = {
+            'hero_to_edit': hero_to_edit
+        }
+        return render(request, 'superheroes/edit.html', context)
 
 
 def delete(request, superhero_id):

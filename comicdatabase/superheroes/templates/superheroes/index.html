@@ -29,7 +29,7 @@
                 <th scope="row">{{ forloop.counter }}</th>
                 <td>{{superhero.name}}</td>
                 <td><a href="{% url 'superheroes:detail' superhero.id %}">See more info</a></td>
-                <td><a href="{% url 'superheroes:edit_get' superhero.id %}">Edit Hero</a></td>
+                <td><a href="{% url 'superheroes:edit' superhero.id %}">Edit Hero</a></td>
                 <td><a href="{% url 'superheroes:delete' superhero.id %}">Delete Hero</a></td>
             </tr>
             </tbody>
